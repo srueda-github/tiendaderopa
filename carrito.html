@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Carrito de Compra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #banner {
+            background-color: #f0e6df;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav {
+            background: #fff;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        tfoot td {
+            font-weight: bold;
+        }
+
+        form {
+            width: 90%;
+            max-width: 400px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">ENVÍOS <strong>GRATUITOS</strong> POR COMPRAS SUPERIORES A <strong>$250.000</strong> | PAGA A
+        <strong>CUOTAS</strong> CON <strong>Addi</strong></div>
+
+    <nav>
+        <a href="index.html" class="logo-nombre" style="text-decoration:none; color:inherit;">
+            BY SUSANA
+        </a>
+
+        <a href="catalogo.html">Catálogo</a> |
+        <a href="categoria.html?cat=prendas-inferiores">Prendas Inferiores</a> |
+        <a href="categoria.html?cat=prendas-superiores">Prendas Superiores</a> |
+        <a href="categoria.html?cat=vestidos">Vestidos</a> |
+        <a href="favoritos.html">Favoritos</a> |
+        <a href="carrito.html">Carrito</a>
+    </nav>
+
+    <h2>Carrito de Compra</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="carrito-body"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td id="total">$0</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <form id="formCompra">
+        <h3>Datos de compra</h3>
+        <input type="text" id="nombre" placeholder="Nombre completo" required />
+        <input type="email" id="email" placeholder="Correo electrónico" required />
+        <input type="tel" id="telefono" placeholder="Teléfono" required />
+        <button type="submit">Comprar</button>
+    </form>
+
+    <script src="js/productos.js"></script>
+    <script>
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const carritoBody = document.getElementById('carrito-body');
+        const totalDiv = document.getElementById('total');
+
+        function renderCarrito() {
+            carritoBody.innerHTML = '';
+            let total = 0;
+
+            if (carrito.length === 0) {
+                carritoBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">El carrito está vacío.</td></tr>';
+                totalDiv.textContent = '$0';
+                return;
+            }
+
+            carrito.forEach(item => {
+                const prod = productos.find(p => p.id === item.id);
+                const subtotal = prod.precio * item.cantidad;
+                total += subtotal;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+          <td>${prod.nombre}</td>
+          <td>${item.cantidad}</td>
+          <td>$${prod.precio.toLocaleString()}</td>
+          <td>$${subtotal.toLocaleString()}</td>
+          <td><button data-id="${item.id}">Eliminar</button></td>
+        `;
+                carritoBody.appendChild(tr);
+            });
+
+            totalDiv.textContent = `$${total.toLocaleString()}`;
+
+            // Evento eliminar
+            document.querySelectorAll('button[data-id]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = parseInt(btn.getAttribute('data-id'));
+                    carrito = carrito.filter(i => i.id !== id);
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderCarrito();
+                });
+            });
+        }
+
+        renderCarrito();
+
+        document.getElementById('formCompra').addEventListener('submit', e => {
+            e.preventDefault();
+
+            if (carrito.length === 0) {
+                alert('El carrito está vacío');
+                return;
+            }
+
+            alert('Compra exitosa. ¡Gracias por su compra!');
+
+            carrito = [];
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            renderCarrito();
+
+            e.target.reset();
+        });
+    </script>
+</body>
+
+</html>

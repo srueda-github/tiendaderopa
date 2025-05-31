@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Catálogo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      #banner {
+        background-color: #f0e6df;
+        padding: 5px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      header nav {
+        background: #fff;
+        padding: 10px 20px;
+        font-weight: bold;
+      }
+      header nav a {
+        margin-right: 15px;
+        text-decoration: none;
+        color: #000;
+      }
+      .categoria-card {
+        width: 220px;
+        height: 250px;
+        border: 1px solid #ccc;
+        margin: 20px;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        padding: 10px;
+        vertical-align: top;
+        border-radius: 8px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+      }
+      .categoria-card:hover {
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .categoria-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .categoria-card p {
+        margin: 10px 0 0 0;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="banner">
+      ENVÍOS <strong>GRATUITOS</strong> POR COMPRAS SUPERIORES A
+      <strong>$250.000</strong> | PAGA A <strong>CUOTAS</strong> CON
+      <strong>Addi</strong>
+    </div>
+
+    <header>
+      <nav>
+        <a
+          href="index.html"
+          class="logo-nombre"
+          style="text-decoration: none; color: inherit"
+        >
+          BY SUSANA
+        </a>
+
+        <a href="catalogo.html">Catálogo</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="carrito.html">Carrito</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2 style="text-align: center; margin-top: 20px">Categorías</h2>
+      <div id="categorias" style="text-align: center">
+        <div class="categoria-card" data-cat="prendas-inferiores">
+          <img src="images/prendas_inferiores.png" alt="Prendas Inferiores" />
+          <p>Prendas Inferiores</p>
+        </div>
+        <div class="categoria-card" data-cat="prendas-superiores">
+          <img src="images/prendas_superiores.png" alt="Prendas Superiores" />
+          <p>Prendas Superiores</p>
+        </div>
+        <div class="categoria-card" data-cat="vestidos">
+          <img src="images/vestidos.png" alt="Vestidos" />
+          <p>Vestidos</p>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.querySelectorAll(".categoria-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const cat = card.getAttribute("data-cat");
+          window.location.href = `categoria.html?cat=${cat}`;
+        });
+      });
+    </script>
+  </body>
+</html>

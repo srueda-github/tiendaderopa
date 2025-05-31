@@ -1,134 +1,248 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>By Susana – Moda que inspira</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>By Susana</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* prueba */
+  </style>
 </head>
+
 <body>
+  <!-- Banner superior -->
+  <div class="banner-envios">
+    ENVÍOS <strong>GRATUITOS</strong> POR COMPRAS SUPERIORES A
+    <strong>$250.000</strong> | PAGA A <strong>CUOTAS</strong> CON
+    <span class="marca">Addi</span>
+  </div>
 
-  <!-- NAV -->
-  <header class="hero">
-    <nav class="hero__nav">
-      <h2 class="hero__logo">By Susana</h2>
-      <ul class="hero__menu">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Catálogo</a></li>
-        <li><a href="#">Juego</a></li>
-        <li><a href="#">App</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </nav>
+  <!-- Encabezado -->
+  <header class="encabezado">
+    <div class="contenedor-header">
+      <a href="index.html" class="logo-nombre" style="text-decoration:none; color:inherit;">BY SUSANA</a>
 
-    <div class="hero__content">
-      <div class="hero__container">
-        <div class="hero__text">
-          <h1 class="hero__title">Moda que inspira</h1>
-          <p class="hero__subtitle">Diseños que destacan</p>
-          <button class="hero__button">Explorar colección</button>
-        </div>
-        <div class="hero__image">
-          <img src="img/modelo.png" alt="Modelo By Susana" style="width: 700px; height: 400px;">
-        </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <nav class="menu-principal" id="menu">
+        <ul class="menu">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#prendas">Catálogo</a></li>
+          <li><a href="#destacados-section">Destacados</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#juego">Juego de Preguntas</a></li>
+          <li><a href="#avatar">Avatar</a></li>
+        </ul>
+      </nav>
+
+      <div class="iconos">
+        <i class="fa fa-search"></i>
+        <i class="fa fa-user"></i>
+        <i class="fa fa-heart"></i>
+        <i class="fa fa-shopping-bag"></i>
       </div>
     </div>
   </header>
 
-  <!-- ABOUT -->
-  <section class="about">
-    <div class="about__container">
-      <div class="about__text">
-        <h2>Sobre By Susana</h2>
-        <p>Una tienda virtual de ropa femenina que combina diseño web, juego interactivo y aplicación móvil para ofrecer una experiencia de compra completa, divertida y moderna.</p>
-        <button class="about__button">Conoce más</button>
+  <!-- Slider automático info empresa -->
+  <section class="slider">
+    <div class="slider-wrapper">
+      <div class="slide active">
+        <div class="info-text">
+          <h3>Misión</h3>
+          <p>Ofrecer productos de calidad que satisfagan las necesidades de nuestros clientes, brindando un servicio
+            excepcional y fomentando la innovación.</p>
+        </div>
+        <div class="info-image">
+          <img src="images/mision.png" alt="Misión" />
+        </div>
       </div>
-      <div class="about__image">
-        <img src="img/ambiente.png" alt="Ambiente de tienda" style="width: 500px; height: 400px;">
+      <div class="slide">
+        <div class="info-text">
+          <h3>Visión</h3>
+          <p>Ser líderes en el mercado nacional, reconocidos por la excelencia en nuestros productos y el compromiso con
+            el desarrollo sostenible.</p>
+        </div>
+        <div class="info-image">
+          <img src="images/ambiente.png" alt="Visión" />
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- CATÁLOGO VISUAL FLEX 3x2 -->
-  <section class="catalog">
-    <div class="catalog__container">
-      <h2>Colección</h2>
-      <p>Explora nuestras categorías</p>
-      <div class="catalog__flex">
-        <div class="catalog__box">
-          <img src="img/nueva.png" alt="Nueva Colección">
-          <span class="catalog__label">NUEVA COLECCIÓN</span>
+      <div class="slide">
+        <div class="info-text">
+          <h3>Objetivos</h3>
+          <ul>
+            <li>Incrementar la satisfacción del cliente.</li>
+            <li>Optimizar procesos internos.</li>
+            <li>Impulsar la capacitación continua.</li>
+          </ul>
         </div>
-        <div class="catalog__box">
-          <img src="img/ver_todo.png" alt="Ver Todo">
-          <span class="catalog__label">VER TODO</span>
-        </div>
-        <div class="catalog__box">
-          <img src="img/sale.png" alt="Sale">
-          <span class="catalog__label">SALE</span>
-        </div>
-        <div class="catalog__box">
-          <img src="img/vestidos.png" alt="Vestidos">
-          <span class="catalog__label">VESTIDOS</span>
-        </div>
-        <div class="catalog__box">
-          <img src="img/superiores.png" alt="Prendas Superiores">
-          <span class="catalog__label">PRENDAS SUPERIORES</span>
-        </div>
-        <div class="catalog__box">
-          <img src="img/inferiores.png" alt="Prendas Inferiores">
-          <span class="catalog__label">PRENDAS INFERIORES</span>
+        <div class="info-image">
+          <img src="images/objetivo.png" alt="Objetivos" />
         </div>
       </div>
     </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
   </section>
 
-  <!-- SERVICIOS -->
-  <section class="services">
-    <div class="services__container">
-      <h2>Servicios</h2>
-      <p>Envíos seguros y atención personalizada</p>
-      <div class="services__items">
-        <div class="services__item">
-          <img src="img/order.png" alt="Pedido">
-          <h3>Pedidos fáciles</h3>
-          <p>Compra rápida y segura desde casa.</p>
+  <!-- Prendas catálogo -->
+  <section id="prendas" class="prendas contenedor">
+    <h2>Catálogo</h2>
+    <div class="prendas-grid">
+      <div class="card grandes inferiores" data-cat="prendas-inferiores"
+        style="background-image: url('images/prendas_inferiores.png');">
+        <div class="overlay"></div>
+        <span>Prendas Inferiores</span>
+      </div>
+      <div class="vertical-cards">
+        <div class="card pequenas superiores" data-cat="prendas-superiores"
+          style="background-image: url('images/prendas_superiores.png');">
+          <div class="overlay"></div>
+          <span>Prendas Superiores</span>
         </div>
-        <div class="services__item">
-          <img src="img/shipping.png" alt="Envío">
-          <h3>Envío Express</h3>
-          <p>Recibe tu pedido en tiempo récord.</p>
-        </div>
-        <div class="services__item">
-          <img src="img/delivered.png" alt="Entregado">
-          <h3>Entrega Garantizada</h3>
-          <p>Seguimiento en tiempo real.</p>
+        <div class="card pequenas vestidos" data-cat="vestidos" style="background-image: url('images/vestidos.png');">
+          <div class="overlay"></div>
+          <span>Vestidos</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACTO / FOOTER -->
-  <footer class="contact">
-    <div class="contact__container">
-      <div class="contact__column">
-        <select id="menuLinks"></select>
+  <!-- Productos destacados -->
+  <section id="destacados-section" class="destacados contenedor">
+    <h2>Productos Destacados</h2>
+    <div id="featured-products-container">
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Anterior">&#8249;</button>
+      <div id="featured-products"></div>
+      <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Siguiente">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- Banner suscripción -->
+  <section class="banner-suscripcion">
+    <div class="banner-texto">
+      <p class="texto-normal">Regístrate y obtén un <strong>15% de descuento</strong></p>
+      <p class="texto-mayus">EN TU PRIMERA COMPRA</p>
+    </div>
+    <button class="btn-suscribirse">SUSCRIBIRSE ✉</button>
+  </section>
+
+  <!-- Catálogo completo -->
+  <section id="catalogo" class="catalogo contenedor">
+    <div id="catalog-products" class="grid-productos"></div>
+  </section>
+
+  <!-- Juego preguntas -->
+  <section id="juego">
+    <h2>Juego de Preguntas</h2>
+    <img src="images/codigo.png" alt="Juego de Preguntas By Susana" width="200" />
+    <p class="codigo">Código del juego: <strong>05403488</strong></p>
+    <a href="https://kahoot.it/challenge/05403488?challenge-id=e9672d8d-f340-44a5-b3b2-a0449e4c575b_1748486478229"
+      target="_blank" rel="noopener" class="btn-kahoot">¡Jugar ahora!</a>
+  </section>
+
+  <!-- Avatar -->
+  <section id="avatar" style="text-align:center;">
+    <h2>Avatar</h2>
+    <a href="images/Avatar.mp4" target="_blank" rel="noopener noreferrer" style="display:inline-block;">
+      <img src="images/avatar.png" alt="Avatar" width="200" style="display:block; margin:0 auto;" />
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <div class="contenedor">
+      <div>
+        <h3>Contacto</h3>
+        <p>📧 <a href="mailto:contacto@bysusana.com">contacto@bysusana.com</a></p>
+        <p>📞 <a href="tel:+573000000000">+57 300 000 0000</a></p>
       </div>
-      <div class="contact__column">
-        <select id="ourService"></select>
+      <div class="social-icons" style="text-align:center;">
+        <h3>Síguenos</h3>
+        <a href="#" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
-      <div class="contact__column">
-        <select id="information"></select>
-      </div>
-      <div class="contact__column">
-        <h2>Contáctanos</h2>
-        <div class="contact__dots">
-          <span></span><span></span><span></span><span></span>
-        </div>
+      <div style="text-align:right;">
+        <h3>Más información</h3>
+        <p><a href="#">Políticas de privacidad</a></p>
+        <p><a href="#">Términos y condiciones</a></p>
+        <p><a href="#">Preguntas frecuentes</a></p>
       </div>
     </div>
+    <div class="text-center">&copy; 2025 By Susana. Todos los derechos reservados.</div>
   </footer>
 
-  <script src="app.js"></script>
+  <!-- Scripts -->
+  <script src="js/catalogo.js"></script>
+
+  <script>
+    // Toggle menú hamburguesa
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      document.getElementById("menu").classList.toggle("active");
+    });
+
+    // Slider info empresa
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const showSlide = (i) => {
+      slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+    };
+    const nextSlide = () => {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    };
+    const prevSlide = () => {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    };
+    document.querySelector(".next").addEventListener("click", nextSlide);
+    document.querySelector(".prev").addEventListener("click", prevSlide);
+    setInterval(nextSlide, 8000);
+    document.addEventListener("DOMContentLoaded", () => showSlide(slideIndex));
+
+    // Carrusel productos destacados
+    const prendasDestacadas = [
+      { imagen: "images/products/vestido6.png", titulo: "Prenda 1", precio: "$100.000" },
+      { imagen: "images/products/vestido5.png", titulo: "Prenda 2", precio: "$85.000" },
+      { imagen: "images/products/body2.png", titulo: "Prenda 3", precio: "$55.000" },
+      { imagen: "images/products/blusa1.png", titulo: "Prenda 4", precio: "$25.000" },
+      { imagen: "images/products/chaqueta1.png", titulo: "Prenda 5", precio: "$85.000" },
+      { imagen: "images/products/short1.png", titulo: "Prenda 6", precio: "$35.000" },
+      { imagen: "images/products/falda1.png", titulo: "Prenda 7", precio: "$40.000" },
+      { imagen: "images/products/jean.png", titulo: "Prenda 8", precio: "$60.000" }
+    ];
+    let indexCarousel = 0;
+    const container = document.getElementById("featured-products");
+    function renderCarousel() {
+      container.innerHTML = prendasDestacadas.slice(indexCarousel, indexCarousel + 4)
+        .map(prenda => `
+          <div class="featured-card">
+            <img src="${prenda.imagen}" alt="${prenda.titulo}">
+            <h4>${prenda.titulo}</h4>
+            <p>${prenda.precio}</p>
+          </div>
+        `).join('');
+    }
+    function moveCarousel(direction) {
+      indexCarousel += direction * 4;
+      indexCarousel = Math.min(Math.max(indexCarousel, 0), prendasDestacadas.length - 4);
+      renderCarousel();
+    }
+    document.addEventListener("DOMContentLoaded", renderCarousel);
+
+    // Navegación categorías con delegación
+    document.getElementById("prendas").addEventListener("click", e => {
+      const card = e.target.closest(".card[data-cat]");
+      if (card) window.location.href = `categoria.html?cat=${card.getAttribute("data-cat")}`;
+    });
+  </script>
 </body>
 </html>

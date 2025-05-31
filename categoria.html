@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Productos por Categoría</title>
+    <style>
+      /* ...mismos estilos que antes (banner, nav, productos) */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      #banner {
+        background-color: #f0e6df;
+        padding: 5px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      nav {
+        background: #fff;
+        padding: 10px 20px;
+        font-weight: bold;
+        text-align: center;
+      }
+      nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #000;
+      }
+      h2 {
+        text-align: center;
+        margin-top: 20px;
+      }
+      #productos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+      }
+      .producto-card {
+        width: 220px;
+        border: 1px solid #ccc;
+        margin: 15px;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+      }
+      .producto-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .fav-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 24px;
+        user-select: none;
+      }
+      button.agregar-carrito {
+        margin-top: 10px;
+        padding: 8px 12px;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        transition: background-color 0.3s ease;
+      }
+      button.agregar-carrito:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="banner">
+      ENVÍOS <strong>GRATUITOS</strong> POR COMPRAS SUPERIORES A
+      <strong>$250.000</strong> | PAGA A <strong>CUOTAS</strong> CON
+      <strong>Addi</strong>
+    </div>
+
+    <nav>
+      <a
+        href="index.html"
+        class="logo-nombre"
+        style="text-decoration: none; color: inherit"
+      >
+        BY SUSANA
+      </a>
+
+      <a href="catalogo.html">Catálogo</a> |
+      <a href="categoria.html?cat=prendas-inferiores">Prendas Inferiores</a> |
+      <a href="categoria.html?cat=prendas-superiores">Prendas Superiores</a> |
+      <a href="categoria.html?cat=vestidos">Vestidos</a> |
+      <a href="favoritos.html">Favoritos</a> |
+      <a href="carrito.html">Carrito</a>
+    </nav>
+
+    <h2 id="titulo-categoria"></h2>
+    <div id="productos"></div>
+
+    <script src="js/productos.js"></script>
+    <script>
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      function nombreCategoria(codigo) {
+        switch (codigo) {
+          case "prendas-inferiores":
+            return "Prendas Inferiores";
+          case "prendas-superiores":
+            return "Prendas Superiores";
+          case "vestidos":
+            return "Vestidos";
+          default:
+            return "Categoría Desconocida";
+        }
+      }
+
+      const cat = getQueryParam("cat");
+      document.getElementById("titulo-categoria").textContent =
+        nombreCategoria(cat);
+
+      const productosFiltrados = productos
+        .filter((p) => p.categoria === cat)
+        .slice(0, 6); // Muestra máximo 6 productos
+
+      const productosDiv = document.getElementById("productos");
+
+      let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+      function toggleFavorito(id) {
+        if (favoritos.includes(id)) {
+          favoritos = favoritos.filter((f) => f !== id);
+        } else {
+          favoritos.push(id);
+        }
+        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+        renderProductos();
+      }
+
+      function esFavorito(id) {
+        return favoritos.includes(id);
+      }
+
+      function agregarAlCarrito(id) {
+        const item = carrito.find((i) => i.id === id);
+        if (item) {
+          item.cantidad++;
+        } else {
+          carrito.push({ id, cantidad: 1 });
+        }
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        alert("Producto agregado al carrito");
+      }
+
+      function renderProductos() {
+        productosDiv.innerHTML = "";
+        productosFiltrados.forEach((prod) => {
+          const div = document.createElement("div");
+          div.className = "producto-card";
+          div.innerHTML = `
+          <img src="${prod.imagen}" alt="${prod.nombre}" />
+          <h4>${prod.nombre}</h4>
+          <p>Precio: $${prod.precio.toLocaleString()}</p>
+          <span class="fav-icon" data-id="${prod.id}">${
+            esFavorito(prod.id) ? "❤️" : "🤍"
+          }</span>
+          <button class="agregar-carrito" data-id="${
+            prod.id
+          }">Agregar al carrito</button>
+        `;
+          productosDiv.appendChild(div);
+        });
+
+        document.querySelectorAll(".fav-icon").forEach((icon) => {
+          icon.addEventListener("click", () => {
+            const id = parseInt(icon.getAttribute("data-id"));
+            toggleFavorito(id);
+          });
+        });
+
+        document.querySelectorAll("button.agregar-carrito").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const id = parseInt(btn.getAttribute("data-id"));
+            agregarAlCarrito(id);
+          });
+        });
+      }
+
+      renderProductos();
+    </script>
+  </body>
+</html>

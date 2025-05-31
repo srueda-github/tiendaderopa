@@ -1,0 +1,30 @@
+[
+  {
+    "nombre": "Blusa Floral",
+    "descripcion": "Blusa ligera y fresca con estampado floral.",
+    "precio": 45000,
+    "imagen": "productos/blusa-floral.jpg",
+    "destacado": true
+  },
+  {
+    "nombre": "Vestido Casual",
+    "descripcion": "Vestido cómodo para el día a día.",
+    "precio": 85000,
+    "imagen": "productos/vestido-casual.jpg",
+    "destacado": false
+  },
+  {
+    "nombre": "Chaqueta de Jean",
+    "descripcion": "Chaqueta clásica de mezclilla azul.",
+    "precio": 120000,
+    "imagen": "productos/chaqueta-jean.jpg",
+    "destacado": true
+  },
+  {
+    "nombre": "Pantalón de Lino",
+    "descripcion": "Pantalón fresco y cómodo para verano.",
+    "precio": 75000,
+    "imagen": "productos/pantalon-lino.jpg",
+    "destacado": false
+  }
+]
